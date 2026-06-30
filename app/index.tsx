@@ -1,0 +1,8 @@
+import { Redirect } from 'expo-router';
+import { useStore } from '../src/store/useStore';
+
+/** Entry gate: send first-time users through onboarding. */
+export default function Index() {
+  const onboarded = useStore((s) => s.onboarded);
+  return <Redirect href={onboarded ? '/(tabs)' : '/onboarding'} />;
+}
